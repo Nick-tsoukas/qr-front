@@ -1,10 +1,13 @@
 <template>
   <div>
-    <h1>This is the nav bar</h1>
-    <Nuxt />
+    <Nav />
+    <Nuxt class="p-4" />
   </div>
 </template>
 
 <script>
-export default {}
+import Nav from '~/components/Nav.vue'
+export default {
+  components: { Nav },
+}
 </script>
