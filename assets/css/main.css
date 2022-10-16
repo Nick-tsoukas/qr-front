@@ -3,31 +3,63 @@
 @tailwind utilities;
 
 @font-face {
-    font-family: "spartan";
-    src: local("spartanreg"),
-     url(~assets/spartanreg.ttf) format("truetype");
+    font-family: "fig";
+    src: local("fig"),
+     url(~assets/fig.ttf) format("truetype");
   }
   @font-face {
-    font-family: "spartanlight";
-    src: local("spartanlight"),
-     url(~assets/spartanlight.ttf) format("truetype");
+    font-family: "figlight";
+    src: local("figlight"),
+     url(~assets/figlight.ttf) format("truetype");
+  }
+
+  @font-face {
+    font-family: "figsemi";
+    src: local("figsemi"),
+     url(~assets/figsemi.ttf) format("truetype");
+  }
+
+  @font-face {
+    font-family: "figbold";
+    src: local("figbold"),
+     url(~assets/figbold.ttf) format("truetype");
+  }
+
+  @font-face {
+    font-family: "figmed";
+    src: local("figmed"),
+     url(~assets/figmed.ttf) format("truetype");
   }
 
   /* stylelint-disable */
 p, li {
-    font-family: "spartanlight";
+    font-family: "figlight";
   }
   
   
   h1,h2,h3,h4,h5,h6{
-    font-family: "spartan";
+    font-family: "figsemi";
   }
   
-  .spartan {
-    font-family: "spartan"
+  .fig {
+    font-family: "fig"
   }
   .spartanlight {
     font-family: "spartanlight"
+  }
+
+  .figlight {
+    font-family: "figlight"
+  }
+  .figsemi {
+    font-family: "figsemi"
+  }
+
+  .figbold {
+    font-family: "figbold"
+  }
+  .figmed {
+    font-family: "figmed"
   }
 
   /* stylelint-disable */

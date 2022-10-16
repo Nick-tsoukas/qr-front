@@ -1,7 +1,7 @@
 <template>
   <div>
-    <Hero />
-    {{ data }}
+    <Hero class="mb-12" />
+    <Card heading="Create landing pages" :points="pointLanding" />
   </div>
 </template>
 
@@ -10,6 +10,11 @@ export default {
   data() {
     return {
       data: {},
+      pointLanding: [
+        'Create band profiles, venues, and bio pages',
+        'Upload music and sell tracts',
+        'Convert auido into NFTs',
+      ],
     }
   },
   async fetch() {
