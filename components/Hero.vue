@@ -1,17 +1,6 @@
 <template>
   <div>
-    <!-- <p class="fig text-sm inline">👋 Dynamic</p>
-    <span class="h[28px] bg-black p-2"
-      ><span class="text-white figbold">QR</span>
-      <span class="text-white fig">Codes</span></span
-    >
-    <p class="inline">Branded</p> -->
-    <!-- <div class="flex items-center mt-8">
-      <h1 class="figbold justify-start flex-grow">Dynamic</h1>
-      <h1 class="figbold justify-end">Dynamic</h1>
-    </div> -->
-
-    <section class="flex items-center mt-16 pl-6 pr-2">
+    <section class="flex items-center mt-16 pl-6 pr-2 sm:hidden">
       <div class="floor isometric">
         <div class="sheet"></div>
       </div>
@@ -21,34 +10,64 @@
         <span class="text-white figbold text-lg">Codes</span>
       </div>
     </section>
-    <div class="flex mt-8">
-      <p class="pr-4 mt-1">👋</p>
-      <p class="figlight text-xl">
-        Create dynamic, branded, QR Codes with fully customizable landing pages
-        to get your sound out
-      </p>
+
+    <div class="bg-white">
+      <div class="mx-auto max-w-7xl py-16 px-4 sm:px-6 lg:py-24 lg:px-8">
+        <div class="mx-auto max-w-3xl text-center">
+          <h2 class="text-3xl font-bold tracking-tight text-gray-900 figbold">
+            Create Dynamic Branded QR Codes
+          </h2>
+          <p class="mt-4 text-lg text-gray-500">
+            Full customizable landing pages are included with your QR Codes
+          </p>
+        </div>
+        <dl
+          class="mt-12 space-y-10 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-12 sm:space-y-0 lg:grid-cols-4 lg:gap-x-8"
+        >
+          <div v-for="feature in features" :key="feature.name" class="relative">
+            <dt>
+              <p class="ml-9 text-lg leading-6 text-gray-900 font-bold figbold">
+                {{ feature.name }}
+              </p>
+            </dt>
+            <dd class="mt-2 ml-9 text-base text-gray-500">
+              {{ feature.description }}
+            </dd>
+          </div>
+        </dl>
+      </div>
     </div>
-    <ul class="mt-6">
-      <li style="margin-left: 32px" class="figlight">
-        Change what your QR codes does anytime
-      </li>
-      <li style="margin-left: 32px" class="figlight">
-        Customizable Landing pages like audio players, videos, players, band
-        profile and more ..
-      </li>
-      <li style="margin-left: 32px" class="figlight">
-        Track how many scans you get
-      </li>
-      <li style="margin-left: 32px" class="figlight">
-        Add your own logo, colors, shapes and more to your QR code
-      </li>
-    </ul>
-    <p class="text-center text-xl mt-6 mb-6 figlight">Landing Pages</p>
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  data() {
+    return {
+      features: [
+        {
+          name: 'Change the function of your QR code ',
+          description:
+            'Link to a website today and then to an event landing pages tomorrow. Make as many changes as you want',
+        },
+        {
+          name: 'Tracking Analytics',
+          description: 'Keep track of how many scans you get per QR code',
+        },
+        {
+          name: 'Adding new landing pages and features all the time ',
+          description:
+            'We are constantly listening to what are users want, so we can build the features you are asking for',
+        },
+        {
+          name: 'Full hosted landing pages, no coding required',
+          description:
+            'We host the landing pages for you with no setup required ',
+        },
+      ],
+    }
+  },
+}
 </script>
 
 <style scoped>

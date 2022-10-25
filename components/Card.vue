@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col min-h-[500px] mx-auto">
+  <div class="flex flex-col min-h-[500px] mx-auto w-full">
     <div>
       <h2 class="px-4 text-xl bg-[#1B2430] text-white py-6 rounded-lg fig">
         {{ heading }}
@@ -10,7 +10,7 @@
         <nuxt-img src="/phone.svg" class="h-[150px] mx-auto" />
       </div>
     </div>
-    <div class="bg-[#1B2430] text-white py-8 px-4 rounded-lg">
+    <div class="bg-[#1B2430] text-white py-8 px-4 rounded-lg min-h-[320px]">
       <h2 class="fig text-xl pb-2">{{ subTitle }}</h2>
       <ul class="text-gray-50">
         <li class="figlight" v-for="point in points" :key="point">
@@ -22,7 +22,7 @@
           <div
             v-for="link in socialLinks"
             :key="link"
-            class="h-[20%] w-[50%] m-6"
+            class="h-[30px] w-[30px] m-6"
           >
             <NuxtImg :src="link" />
           </div>
@@ -31,7 +31,18 @@
     </div>
     <div>
       <div class="mt-8">
-        <Button class="bg-green-300 figbold" text="Create QR" />
+        <Button
+          class="bg-green-300 figbold"
+          text-type="textType"
+          text="Preview"
+        />
+      </div>
+      <div class="mt-8">
+        <Button
+          class="bg-green-300 figbold"
+          text-type="textType"
+          text="Create QR"
+        />
       </div>
     </div>
   </div>
@@ -68,6 +79,12 @@ export default {
       type: String,
       default: () => {
         'details'
+      },
+    },
+    textType: {
+      type: String,
+      default: () => {
+        return ''
       },
     },
   },

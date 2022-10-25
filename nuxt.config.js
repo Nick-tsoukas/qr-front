@@ -17,7 +17,7 @@ export default {
   css: ['@/assets/css/main.css', 'animate.css/animate.min.css'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: ['~plugins/vue-uuid'],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -31,6 +31,8 @@ export default {
     '@nuxtjs/stylelint-module',
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
+    '@nuxtjs/composition-api/module',
+    '@braid/vue-formulate/nuxt',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
