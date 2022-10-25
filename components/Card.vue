@@ -35,6 +35,7 @@
           class="bg-green-300 figbold"
           text-type="textType"
           text="Preview"
+          @click.native="preview"
         />
       </div>
       <div class="mt-8">
@@ -42,6 +43,7 @@
           class="bg-green-300 figbold"
           text-type="textType"
           text="Create QR"
+          @click.native="preview"
         />
       </div>
     </div>
@@ -86,6 +88,17 @@ export default {
       default: () => {
         return ''
       },
+    },
+    splashType: {
+      type: String,
+      default: () => {
+        return ''
+      },
+    },
+  },
+  methods: {
+    preview(val) {
+      this.$emit('splashPreview', this.splashType)
     },
   },
 }

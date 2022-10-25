@@ -1,65 +1,80 @@
 <template>
   <div>
-    <section class="container mx-auto">
-      <Hero class="mb-12" />
-    </section>
-    <section
-      class="container mx-auto md:grid md:grid-cols-3 md:justify-between md:gap-14"
-    >
-      <Card
-        heading="All Social Links"
-        :points="pointLandingSocial"
-        class="mb-12"
-        :social="true"
-        :socialLinks="[
-          '/youtube.svg',
-          '/whatsapp.svg',
-          '/snapchat.svg',
-          '/spotify.svg',
-          '/soundcloud.svg',
-          'facebook.svg',
-          'messenger.svg',
-          'flickr.svg',
-        ]"
-        subTitle="Social"
-        textType="Social"
-      />
-      <Card
-        heading="Audio Player"
-        :points="pointAudioPage"
-        class="mb-12"
-        sugTitle="Audio Player"
-        textType="Audio"
-      />
-      <Card
-        heading="Event Page"
-        :points="pointEvent"
-        class="mb-12"
-        subTitle="Events"
-        textType="Event"
-      />
-      <Card
-        heading="Website Link"
-        :points="pointEvent"
-        class="mb-12"
-        subTitle="Link"
-        textType="Link"
-      />
-      <Card
-        heading="Band Profile"
-        :points="pointBand"
-        class="mb-12"
-        subTitle="Band Profile"
-        textType="Band Profile"
-      />
-      <Card
-        heading="Share Contact"
-        :points="pointContact"
-        class="mb-12"
-        subTitle="Share Contact"
-        textType="Share Contact "
-      />
-    </section>
+    <div v-if="!preview">
+      <section class="container mx-auto">
+        <Hero class="mb-12" />
+      </section>
+      <section
+        class="container mx-auto md:grid md:grid-cols-3 md:justify-between md:gap-14"
+      >
+        <Card
+          heading="All Social Links"
+          :points="pointLandingSocial"
+          class="mb-12"
+          :social="true"
+          :socialLinks="[
+            '/youtube.svg',
+            '/whatsapp.svg',
+            '/snapchat.svg',
+            '/spotify.svg',
+            '/soundcloud.svg',
+            'facebook.svg',
+            'messenger.svg',
+            'flickr.svg',
+          ]"
+          subTitle="Social"
+          textType="Social"
+          splashType="Social"
+          @splashPreview="setPreview"
+        />
+        <Card
+          heading="Audio Player"
+          :points="pointAudioPage"
+          class="mb-12"
+          sugTitle="Audio Player"
+          textType="Audio"
+          splashType="Audio"
+          @splashPreview="setPreview"
+        />
+        <Card
+          heading="Event Page"
+          :points="pointEvent"
+          class="mb-12"
+          subTitle="Events"
+          textType="Event"
+          splashType="Event"
+          @splashPreview="setPreview"
+        />
+        <Card
+          heading="Website Link"
+          :points="pointEvent"
+          class="mb-12"
+          subTitle="Link"
+          textType="Link"
+          splashType="Link"
+          @splashPreview="setPreview"
+        />
+        <Card
+          heading="Band Profile"
+          :points="pointBand"
+          class="mb-12"
+          subTitle="Band Profile"
+          textType="Band Profile"
+          splashType="Band"
+          @splashPreview="setPreview"
+        />
+        <Card
+          heading="Share Contact"
+          :points="pointContact"
+          class="mb-12"
+          subTitle="Share Contact"
+          textType="Share Contact "
+          splashType="Contact"
+          @splashPreview="setPreview"
+        />
+      </section>
+    </div>
+    <component :is="previewComponent" v-else @close="closePre"></component>
   </div>
 </template>
 
@@ -68,6 +83,8 @@ export default {
   data() {
     return {
       data: {},
+      preview: false,
+      previewComponent: 'Social',
       pointLandingSocial: [
         'List all your social media links ',
         'Facebook Twitch Tiktoc Snap ...',
@@ -98,8 +115,16 @@ export default {
       type: 'social',
     }
   },
-  async fetch() {
-    this.data = await this.$strapi.find('test-data')
+  methods: {
+    setPreview(val) {
+      this.previewType = val
+      this.previewComponent = val
+      this.preview = true
+    },
+    closePre() {
+      console.log('this is the close pre ')
+      this.preview = false
+    },
   },
 }
 </script>

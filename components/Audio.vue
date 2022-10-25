@@ -23,27 +23,24 @@
         <SocialButtons
           icon="/facebook.svg"
           typeClass="facebook"
-          class="mx-auto mb-6"
+          class="mx-auto"
         />
       </a>
       <a href="https://google.com">
-        <SocialButtons
-          icon="/spotify.svg"
-          typeClass="spotify"
-          class="mx-auto mb-6"
+        <SocialButtons icon="/spotify.svg" typeClass="spotify" class="mx-auto"
       /></a>
       <a href="https://google.com">
         <SocialButtons
           icon="/messenger.svg"
           typeClass="facebook"
-          class="mx-auto mb-6"
+          class="mx-auto"
         />
       </a>
       <a href="https://google.com">
         <SocialButtons
           icon="/soundcloud.svg"
           typeClass="spotify"
-          class="mx-auto mb-6"
+          class="mx-auto"
         />
       </a>
     </section>
