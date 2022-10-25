@@ -23,11 +23,27 @@
     </section>
     <div class="flex mt-8">
       <p class="pr-4 mt-1">👋</p>
-      <p class="figlight text-lg">
-        Create dynamic, branded, QR Codes with splash pages to get your sound
-        out
+      <p class="figlight text-xl">
+        Create dynamic, branded, QR Codes with fully customizable landing pages
+        to get your sound out
       </p>
     </div>
+    <ul class="mt-6">
+      <li style="margin-left: 32px" class="figlight">
+        Change what your QR codes does anytime
+      </li>
+      <li style="margin-left: 32px" class="figlight">
+        Customizable Landing pages like audio players, videos, players, band
+        profile and more ..
+      </li>
+      <li style="margin-left: 32px" class="figlight">
+        Track how many scans you get
+      </li>
+      <li style="margin-left: 32px" class="figlight">
+        Add your own logo, colors, shapes and more to your QR code
+      </li>
+    </ul>
+    <p class="text-center text-xl mt-6 mb-6 figlight">Landing Pages</p>
   </div>
 </template>
 
@@ -124,6 +140,10 @@ export default {}
     box-shadow: 80px 112px 40px rgba(0, 0, 0, 0.2),
       80px 80px 40px rgba(0, 0, 0, 0.2);
   }
+}
+li {
+  list-style: square;
+  margin-top: 0.8em;
 }
 /* stylelint-enable */
 </style>

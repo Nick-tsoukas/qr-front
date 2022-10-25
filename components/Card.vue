@@ -11,14 +11,27 @@
       </div>
     </div>
     <div class="bg-[#1B2430] text-white py-8 px-4 rounded-lg">
-      <h2 class="fig text-xl pb-2">Details</h2>
+      <h2 class="fig text-xl pb-2">{{ subTitle }}</h2>
       <ul class="text-gray-50">
         <li class="figlight" v-for="point in points" :key="point">
           {{ point }}
         </li>
       </ul>
-      <div class="max-w-[140px] mt-8">
-        <Button text="learn more" />
+      <div v-if="social">
+        <div v-if="socialLinks.length > 0" class="grid grid-cols-4">
+          <div
+            v-for="link in socialLinks"
+            :key="link"
+            class="h-[20%] w-[50%] m-6"
+          >
+            <NuxtImg :src="link" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="mt-8">
+        <Button class="bg-green-300 figbold" text="Create QR" />
       </div>
     </div>
   </div>
@@ -37,6 +50,24 @@ export default {
       type: Array,
       default: () => {
         return []
+      },
+    },
+    social: {
+      type: Boolean,
+      default: () => {
+        return false
+      },
+    },
+    socialLinks: {
+      type: Array,
+      default: () => {
+        return ['one']
+      },
+    },
+    subTitle: {
+      type: String,
+      default: () => {
+        'details'
       },
     },
   },
