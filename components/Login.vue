@@ -49,6 +49,7 @@
             >
             <div class="mt-1">
               <input
+                v-model="email"
                 id="email"
                 name="email"
                 type="email"
@@ -67,7 +68,7 @@
             >
             <div class="mt-1">
               <input
-                id="password"
+                v-model="password"
                 name="password"
                 type="password"
                 autocomplete="current-password"
@@ -100,12 +101,12 @@
           </div>
 
           <div>
-            <button
-              type="submit"
+            <div
               class="flex w-full justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+              @click="login"
             >
               Sign in
-            </button>
+            </div>
           </div>
         </form>
 
@@ -184,18 +185,65 @@
         </div>
       </div>
     </div>
+    <div class="mt-6" @click="closeLogin">
+      <Button text="Cancel" />
+    </div>
   </div>
 </template>
 
 <script>
 export default {
+  props: {
+    home: {
+      type: Boolean,
+      default: () => {
+        return false
+      },
+    },
+    splashType: {
+      type: String,
+      default: () => {
+        return ''
+      },
+    },
+  },
+  data() {
+    return {
+      password: '',
+      email: '',
+    }
+  },
   methods: {
     createComp() {
       console.log('change comp ')
       this.$emit('createComp')
     },
+    closeLogin() {
+      console.log('this is the signup comp')
+      this.$emit('closeLogin')
+    },
+
+    async login() {
+      try {
+        await this.$strapi.login({
+          identifier: this.email,
+          password: this.password,
+        })
+        if (this.splashType) {
+          this.$router.push({
+            path: 'profile',
+            query: { user: this.$strapi.user.id, splashType: this.splashType },
+          })
+        } else {
+          this.$router.push({
+            path: 'profile',
+            query: { user: this.$strapi.user.id },
+          })
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    },
   },
 }
 </script>
-
-<style lang="scss" scoped></style>

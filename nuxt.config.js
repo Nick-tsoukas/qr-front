@@ -43,6 +43,7 @@ export default {
     '@nuxtjs/pwa',
     '@nuxtjs/strapi',
     '@nuxt/image',
+    '@nuxtjs/axios',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios

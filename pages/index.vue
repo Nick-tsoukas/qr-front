@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="!preview">
+    <div v-if="!preview && !signup && !login">
       <section class="container mx-auto">
         <Hero class="mb-12" />
       </section>
@@ -26,6 +26,7 @@
           textType="Social"
           splashType="Social"
           @splashPreview="setPreview"
+          @createCode="create"
         />
         <Card
           heading="Audio Player"
@@ -35,6 +36,7 @@
           textType="Audio"
           splashType="Audio"
           @splashPreview="setPreview"
+          @createCode="create"
         />
         <Card
           heading="Event Page"
@@ -44,6 +46,7 @@
           textType="Event"
           splashType="Event"
           @splashPreview="setPreview"
+          @createCode="create"
         />
         <Card
           heading="Website Link"
@@ -53,6 +56,7 @@
           textType="Link"
           splashType="Link"
           @splashPreview="setPreview"
+          @createCode="create"
         />
         <Card
           heading="Band Profile"
@@ -62,6 +66,7 @@
           textType="Band Profile"
           splashType="Band"
           @splashPreview="setPreview"
+          @createCode="create"
         />
         <Card
           heading="Share Contact"
@@ -71,10 +76,28 @@
           textType="Share Contact "
           splashType="Contact"
           @splashPreview="setPreview"
+          @createCode="create"
         />
       </section>
     </div>
-    <component :is="previewComponent" v-else @close="closePre"></component>
+    <Signup
+      @closeSignup="closeSignup"
+      @openLogin="openLogin"
+      v-if="signup"
+      :home="true"
+      :splashType="splashType"
+    />
+    <Login
+      @closeLogin="closeLogin"
+      v-if="login"
+      :home="true"
+      :splashType="splashType"
+    />
+    <component
+      :is="previewComponent"
+      v-if="preview"
+      @close="closePre"
+    ></component>
   </div>
 </template>
 
@@ -83,6 +106,8 @@ export default {
   data() {
     return {
       data: {},
+      signup: false,
+      login: false,
       preview: false,
       previewComponent: 'Social',
       pointLandingSocial: [
@@ -113,9 +138,32 @@ export default {
         'List Upcoming shows and more',
       ],
       type: 'social',
+      splashType: '',
     }
   },
   methods: {
+    create(val) {
+      console.log(val, 'this is val')
+      this.splashType = val
+      if (!this.$strapi.user) {
+        this.signup = true
+      }
+    },
+    closeSignup() {
+      console.log('this is the close signup ')
+      this.signup = false
+      this.login = false
+    },
+    openLogin() {
+      console.log('this is the close signup ')
+      this.signup = false
+      this.login = true
+    },
+    closeLogin() {
+      console.log('this is the close signup ')
+      this.signup = false
+      this.login = false
+    },
     setPreview(val) {
       this.previewType = val
       this.previewComponent = val

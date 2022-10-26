@@ -20,12 +20,12 @@
         X
       </div>
       <div @click="toggleMenu">
-        <NuxtLink class="chedder text-2xl" to="/">Home</NuxtLink>
+        <NuxtLink class="figlight text-xl" to="/">Home</NuxtLink>
       </div>
       <div v-if="$strapi.user" @click="toggleMenu">
         <NuxtLink
           v-if="$strapi.user.band !== null"
-          class="text-2xl chedder"
+          class="text-xl figlight"
           to="/profile"
           >Profile</NuxtLink
         >
@@ -33,18 +33,18 @@
 
       <div v-if="$strapi.user">
         <div @click="logout">
-          <NuxtLink class="chedder text-2xl" to="/" @click="logout"
-            >Logout fdsfsdf</NuxtLink
-          >
+          <NuxtLink class="figlight text-xl" to="/" @click="logout"
+            >Logout
+          </NuxtLink>
         </div>
       </div>
       <div v-if="!$strapi.user" @click="toggleMenu">
-        <NuxtLink class="chedder text-2xl" to="/signup" @click="toggleMenu"
+        <NuxtLink class="figlight text-xl" to="/signup" @click="toggleMenu"
           >signup</NuxtLink
         >
       </div>
       <div v-if="!$strapi.user" @click="toggleMenu">
-        <NuxtLink class="chedder text-2xl" to="/login" @click="toggleMenu"
+        <NuxtLink class="figlight text-xl" to="/login" @click="toggleMenu"
           >Login</NuxtLink
         >
       </div>

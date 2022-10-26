@@ -32,9 +32,17 @@
         Already have an account
         {{ ' ' }}
         <span
+          v-if="!home"
           href="#"
           class="font-medium text-indigo-600 hover:text-indigo-500"
           @click="createComp"
+          >Login</span
+        >
+        <span
+          v-if="home"
+          href="#"
+          class="font-medium text-indigo-600 hover:text-indigo-500"
+          @click="openLogin"
           >Login</span
         >
       </p>
@@ -184,23 +192,47 @@
         </div>
       </div>
     </div>
+    <div class="mt-6" @click="closeSignup">
+      <Button text="Cancel" />
+    </div>
   </div>
 </template>
 
 <script>
 export default {
+  props: {
+    home: {
+      type: Boolean,
+      default: () => {
+        return false
+      },
+    },
+    splashType: {
+      type: String,
+      default: () => {
+        return ''
+      },
+    },
+  },
   data() {
     return {
       user: {},
       email: '',
       password: '',
+      loading: false,
     }
   },
   methods: {
     createComp() {
       this.$emit('createComp')
     },
-
+    closeSignup() {
+      console.log('this is the signup comp')
+      this.$emit('closeSignup', 'signup')
+    },
+    openLogin() {
+      this.$emit('openLogin')
+    },
     async createAccount() {
       await console.log(this.email, this.password)
       try {
@@ -211,7 +243,20 @@ export default {
           acc: 1,
         })
         this.user = user
-        console.log(user)
+        if (user) {
+          this.loading = false
+          if (this.home) {
+            this.$router.push({
+              path: 'profile',
+              query: { user: user.id, splashType: 'Social' },
+            })
+          } else {
+            this.$router.push({
+              path: 'profile',
+              query: { user: user.id },
+            })
+          }
+        }
       } catch (error) {
         console.log(error)
       }

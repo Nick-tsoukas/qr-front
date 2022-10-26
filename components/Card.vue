@@ -43,7 +43,7 @@
           class="bg-green-300 figbold"
           text-type="textType"
           text="Create QR"
-          @click.native="preview"
+          @click.native="createCode"
         />
       </div>
     </div>
@@ -99,6 +99,9 @@ export default {
   methods: {
     preview(val) {
       this.$emit('splashPreview', this.splashType)
+    },
+    createCode() {
+      this.$emit('createCode', this.splashType)
     },
   },
 }
