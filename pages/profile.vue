@@ -51,9 +51,9 @@ export default {
       renderSplashForm: false,
     }
   },
+
   async mounted() {
     const user = await this.$strapi.findOne('users', this.$strapi.user.id)
-    console.log(user, 'this is the user ')
     this.user = user
   },
   methods: {

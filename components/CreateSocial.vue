@@ -1,7 +1,7 @@
 <template>
   <section>
-    <h2 class="figbold text-xl text-center">Create All Your Links Page</h2>
-    <div>
+    <h2 class="figbold text-xl text-center">{{ title }}</h2>
+    <div v-if="!styleQr">
       <div class="mt-1">
         <label for="title" class="block text-sm font-medium text-gray-700"
           >Featured Image
@@ -103,8 +103,9 @@
           />
         </div>
       </div>
-      <div @click="submit">Submit</div>
+      <Button text="next" @click.native="submit" />
     </div>
+    <QrCodeStyling v-if="styleQr" />
   </section>
 </template>
 
@@ -117,6 +118,8 @@ export default {
         featImage: false,
       },
       image: false,
+      title: 'Create Your Landing Page',
+      styleQr: false,
     }
   },
   methods: {
@@ -131,6 +134,8 @@ export default {
           this.formValues.featImage = image
         }
         console.log(this.formValues)
+        this.title = 'Style Your QR'
+        this.styleQr = true
       } catch (error) {
         console.log(error)
       }

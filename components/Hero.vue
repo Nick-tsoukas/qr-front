@@ -12,7 +12,7 @@
     </section>
 
     <div class="bg-white">
-      <div class="mx-auto max-w-7xl py-16 px-4 sm:px-6 lg:py-24 lg:px-8">
+      <div class="mx-auto max-w-7xl py-16 px-2 sm:px-6 lg:py-24 lg:px-8">
         <div class="mx-auto max-w-3xl text-center">
           <h2 class="text-3xl font-bold tracking-tight text-gray-900 figbold">
             Create Dynamic Branded QR Codes
@@ -26,11 +26,11 @@
         >
           <div v-for="feature in features" :key="feature.name" class="relative">
             <dt>
-              <p class="ml-9 text-lg leading-6 text-gray-900 font-bold figbold">
+              <p class="ml-4 text-lg leading-6 text-gray-900 font-bold figbold">
                 {{ feature.name }}
               </p>
             </dt>
-            <dd class="mt-2 ml-9 text-base text-gray-500">
+            <dd class="mt-2 ml-4 text-base text-gray-500">
               {{ feature.description }}
             </dd>
           </div>

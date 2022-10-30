@@ -3,12 +3,17 @@ export default {
   target: 'static',
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'qr-front',
+    title: 'qr',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: '' },
       { name: 'format-detection', content: 'telephone=no' },
+    ],
+    script: [
+      {
+        src: 'https://cdn.jsdelivr.net/npm/qr-code-styling@1.6.0-rc.1/lib/qr-code-styling.min.js',
+      },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
