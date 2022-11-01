@@ -193,7 +193,9 @@
       </div>
     </div>
     <div class="mt-6" @click="closeSignup">
-      <Button text="Cancel" />
+      <nuxt-link to="/">
+        <Button text="Cancel" />
+      </nuxt-link>
     </div>
   </div>
 </template>

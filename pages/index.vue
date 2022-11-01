@@ -2,9 +2,10 @@
   <div>
     <div v-if="!preview && !signup && !login">
       <section class="container mx-auto">
-        <Hero class="mb-12" />
+        <!-- <Hero class="mb-12" /> -->
+        <HeroAlt />
       </section>
-      <section
+      <!-- <section
         class="container mx-auto md:grid md:grid-cols-3 md:justify-between md:gap-14"
       >
         <Card
@@ -78,7 +79,7 @@
           @splashPreview="setPreview"
           @createCode="create"
         />
-      </section>
+      </section> -->
     </div>
     <Signup
       @closeSignup="closeSignup"
