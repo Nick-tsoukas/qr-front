@@ -2,6 +2,7 @@
   <div class="fixed top-0 left-0 h-screen w-screen bg-white">
     <!-- header with close button  -->
     <div
+      v-if="preview"
       class="bg-black text-white p-6 flex items-center justify-center"
       @click="closePreview"
     >
@@ -21,7 +22,7 @@
       <h1 class="text-lg figlight text-center my-6">{{ message }}</h1>
     </section>
     <!-- Buttons -->
-    <section class="container mx-auto">
+    <section v-if="!create" class="container mx-auto">
       <a href="https://google.com">
         <SocialButtons
           icon="/facebook.svg"
@@ -50,6 +51,19 @@
         />
       </a>
     </section>
+    <section v-else class="container mx-auto">
+      <a
+        v-for="button in buttons"
+        :key="button.name"
+        :href="`https://${button.link}`"
+      >
+        <SocialButtons
+          :icon="`/${button.name}.svg`"
+          :typeClass="button.name"
+          class="mx-auto mb-6"
+        />
+      </a>
+    </section>
   </div>
 </template>
 
@@ -68,6 +82,12 @@ export default {
         return true
       },
     },
+    preview: {
+      type: Boolean,
+      default: () => {
+        return false
+      },
+    },
     headline: {
       type: String,
       default: () => {
@@ -78,6 +98,12 @@ export default {
       type: String,
       default: () => {
         return 'Check us out on social media '
+      },
+    },
+    buttons: {
+      type: Object,
+      default: () => {
+        return {}
       },
     },
   },

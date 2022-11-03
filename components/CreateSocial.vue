@@ -85,7 +85,7 @@
           >Title</label
         >
         <input
-          v-model="formValues.title"
+          v-model="formValues.headline"
           name="title"
           type="text"
           autocomplete="text"
@@ -115,13 +115,18 @@
         <div class="flex">
           <nuxt-img src="/facebook.svg" height="30" width="30" class="mr-6" />
           <input
-            v-model="formValues.buttons.facebook"
+            :value="
+              formValues.buttons.facebook
+                ? formValues.buttons.facebook.link
+                : ''
+            "
             name="facebook"
             type="text"
             placeholder="https:/facebook/youname"
             autocomplete="text"
             required=""
             class="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+            @change="setButton('facebook', $event.target.value)"
           />
         </div>
       </div>
@@ -134,13 +139,16 @@
         <div class="flex">
           <nuxt-img src="/spotify.svg" height="30" width="30" class="mr-6" />
           <input
-            v-model="formValues.buttons.spotify"
+            :value="
+              formValues.buttons.spotify ? formValues.buttons.spotify.link : ''
+            "
             name="spotify"
             type="text"
             placeholder="https:/spotify/yourband"
             autocomplete="text"
             required=""
             class="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+            @change="setButton('spotify', $event.target.value)"
           />
         </div>
       </div>
@@ -154,31 +162,55 @@
         <div class="flex">
           <nuxt-img src="/soundcloud.svg" height="30" width="30" class="mr-6" />
           <input
-            v-model="formValues.buttons.soundcloud"
+            :value="
+              formValues.buttons.soundcloud
+                ? formValues.buttons.soundcloud.link
+                : ''
+            "
             name="soundcloud"
             type="text"
             placeholder="https:/soundcloud/yourband"
             autocomplete="text"
             required=""
             class="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+            @change="setButton('soundcloud', $event.target.value)"
           />
         </div>
       </div>
-      <Button text="next" class="mt-6" @click.native="previewSocial" />
+      <Button
+        text="Preview Landing Page"
+        class="mt-6"
+        @click.native="previewSocial"
+      />
       <Button text="next" class="mt-6" @click.native="next" />
     </div>
-    <QrCodeStyling v-if="styleQr && !previewSplash" />
-    <Social v-if="previewSplash" :image="image ? image : ''" @close="log" />
+    <Social
+      v-if="previewSplash"
+      :image="image ? image : ''"
+      :headline="formValues.headline"
+      :message="formValues.message"
+      :buttons="formValues.buttons"
+      :preview="true"
+      @close="log"
+    />
+    <!-- This is the creation of the actual qr code  -->
+    <QrCodeStyling v-if="styleQr && !previewSplash" @createQr="createQr" />
   </section>
 </template>
 
 <script>
+import { uuid } from 'vue-uuid'
+const NAMESPACE = '65f9af5d-f23f-4065-ac85-da725569fdcd'
 export default {
   data() {
     return {
+      NAMESPACE,
+      uuid: uuid.v1(),
       formValues: {
         buttons: {},
         featImage: false,
+        headline: '',
+        message: '',
       },
       image: false,
       title: 'Create Your Landing Page',
@@ -187,6 +219,25 @@ export default {
     }
   },
   methods: {
+    async createQr(val) {
+      try {
+        const qr = await this.$strapi.create('qrs', {
+          qrOptions: val,
+          users_permissions_user: this.$strapi.user.id,
+        })
+        // update the data url with query id and type
+        qr.qrOptions.data = `http://localhost:3000/qr?id=${qr.id}&type=Social`
+        await this.$strapi.update('qrs', qr.id, {
+          qrOptions: qr.qrOptions,
+        })
+      } catch (error) {
+        console.log(error, 'write a error message data prop')
+      }
+    },
+    setButton(name, val) {
+      this.formValues.buttons[name] = { name: name, link: val }
+      console.log(this.formValues)
+    },
     async next() {
       console.log('sending form')
       try {
