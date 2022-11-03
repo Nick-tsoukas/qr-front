@@ -31,19 +31,19 @@
       <p class="mt-2 text-center text-sm text-gray-600">
         Already have an account
         {{ ' ' }}
-        <span
+        <nuxt-link
           v-if="!home"
-          href="#"
+          to="/login"
           class="font-medium text-indigo-600 hover:text-indigo-500"
           @click="createComp"
-          >Login</span
+          >Login</nuxt-link
         >
-        <span
+        <nuxt-link
           v-if="home"
-          href="#"
+          to="/login"
           class="font-medium text-indigo-600 hover:text-indigo-500"
           @click="openLogin"
-          >Login</span
+          >Login</nuxt-link
         >
       </p>
     </div>

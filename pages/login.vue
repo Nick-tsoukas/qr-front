@@ -12,6 +12,11 @@ export default {
       login: true,
     }
   },
+  mounted() {
+    if (this.$strapi.user) {
+      this.$router.push('/profile')
+    }
+  },
   methods: {
     setCreate() {
       this.login = false

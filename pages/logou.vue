@@ -3,7 +3,13 @@
 </template>
 
 <script>
-export default {}
+export default {
+  mounted() {
+    if (this.$strapi.user) {
+      this.$router.push('/profile')
+    }
+  },
+}
 </script>
 
 <style lang="scss" scoped></style>

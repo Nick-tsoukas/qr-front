@@ -31,11 +31,11 @@
       <p class="mt-2 text-center text-sm text-gray-600">
         Or
         {{ ' ' }}
-        <span
-          href="#"
+        <nuxt-link
+          to="/signup"
           class="font-medium text-indigo-600 hover:text-indigo-500"
           @click="createComp"
-          >Create Account</span
+          >Create Account</nuxt-link
         >
       </p>
     </div>
@@ -101,11 +101,11 @@
           </div>
 
           <div>
-            <div
-              class="flex w-full justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-              @click="login"
-            >
-              Sign in
+            <Button @click.native="login" text="Login" />
+            <div class="mt-6" @click="closeLogin">
+              <nuxt-link to="/">
+                <Button text="Cancel" />
+              </nuxt-link>
             </div>
           </div>
         </form>
@@ -184,11 +184,6 @@
           </div>
         </div>
       </div>
-    </div>
-    <div class="mt-6" @click="closeLogin">
-      <nuxt-link to="/">
-        <Button text="Cancel" />
-      </nuxt-link>
     </div>
   </div>
 </template>

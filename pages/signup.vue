@@ -9,6 +9,11 @@ export default {
   data() {
     return {}
   },
+  mounted() {
+    if (this.$strapi.user) {
+      this.$router.push('/profile')
+    }
+  },
 }
 </script>
 

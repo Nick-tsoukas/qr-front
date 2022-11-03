@@ -20,18 +20,18 @@
             Create branded QR codes with landing pages and dynamic functionality
             to get your sound out
           </p>
-          <div class="mt-10 sm:flex sm:justify-center lg:justify-start">
+          <div class="mt-14 sm:flex sm:justify-center lg:justify-start">
             <div class="rounded-md shadow">
               <nuxt-link
                 to="/signup"
-                class="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 md:py-4 md:px-10 md:text-lg"
+                class="flex w-full items-center justify-center rounded-md border border-transparent bg-black px-8 py-3 text-base fig text-[#00FFD7] hover:bg-indigo-700 md:py-4 md:px-10 md:text-lg"
                 >Get started</nuxt-link
               >
             </div>
-            <div class="mt-3 rounded-md shadow sm:mt-0 sm:ml-3">
+            <div class="mt-6 rounded-md shadow sm:mt-0 sm:ml-3">
               <nuxt-link
                 to="/login"
-                class="flex w-full items-center justify-center rounded-md border border-transparent bg-white px-8 py-3 text-base font-medium text-indigo-600 hover:bg-gray-50 md:py-4 md:px-10 md:text-lg"
+                class="flex w-full items-center justify-center rounded-md border border-transparent bg-white px-8 py-3 text-base fig text-black hover:bg-gray-50 md:py-4 md:px-10 md:text-lg"
                 >Login</nuxt-link
               >
             </div>

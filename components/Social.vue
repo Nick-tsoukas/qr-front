@@ -7,7 +7,10 @@
     >
       <h1 class="text-center text-xl figlight">x close preview</h1>
     </div>
-    <section class="mx-auto">
+    <section v-if="create" class="mx-auto">
+      <img v-if="image" height="350" :src="image" class="mx-auto" />
+    </section>
+    <section v-else class="mx-auto">
       <NuxtImg height="350" src="/band.jpg" class="mx-auto" />
     </section>
     <!-- Title  -->
@@ -53,10 +56,16 @@
 <script>
 export default {
   props: {
-    profileImg: {
+    image: {
       type: String,
       default: () => {
         return ''
+      },
+    },
+    create: {
+      type: Boolean,
+      default: () => {
+        return true
       },
     },
     headline: {
