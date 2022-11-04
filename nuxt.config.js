@@ -56,7 +56,7 @@ export default {
   // PWA module configuration: https://go.nuxtjs.dev/pwa
 
   strapi: {
-    url: process.env.BACKEND_URL,
+    url: 'https://seal-app-fbtpo.ondigitalocean.app',
     // url: 'http://localhost:1337',
   },
 
