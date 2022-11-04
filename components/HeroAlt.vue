@@ -39,9 +39,10 @@
         </div>
       </div>
       <div
-        class="relative h-64 w-full sm:h-72 md:h-96 lg:absolute lg:inset-y-0 lg:right-0 lg:h-full lg:w-1/2"
+        class="relative flex items-center h-64 w-full sm:h-72 md:h-96 lg:absolute lg:inset-y-0 lg:right-0 lg:h-full lg:w-1/2"
       >
         <!-- Put Qr Code here -->
+        <NuxtImg src="/codeone.png" alt="" class="mx-auto" />
       </div>
     </main>
   </div>

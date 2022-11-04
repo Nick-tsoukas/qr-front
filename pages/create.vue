@@ -2,7 +2,7 @@
   <div>
     <!-- Create Qr (pick type) Section  -->
     <section class="container mx-auto">
-      <h2 class="text-xl figbold my-2">Create A QR</h2>
+      <h2 class="text-xl figbold my-4">Choose a QR Code type</h2>
       <div
         v-if="chooseType"
         class="flex flex-col justify-center items-center gap-6 md:flex-row"

@@ -1,6 +1,21 @@
 <template>
   <section>
     <div v-if="!styleQr && !previewSplash">
+      <div>
+        <div class="mt-1">
+          <label for="title" class="block text-sm font-medium text-gray-700"
+            >Name your QR code {{ name }}</label
+          >
+          <input
+            v-model="formValues.name"
+            name="name"
+            type="text"
+            autocomplete="text"
+            required=""
+            class="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+          />
+        </div>
+      </div>
       <div
         v-if="!image"
         class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5"
@@ -86,7 +101,7 @@
         >
         <input
           v-model="formValues.headline"
-          name="title"
+          name="headline"
           type="text"
           autocomplete="text"
           required=""
@@ -211,6 +226,7 @@ export default {
         featImage: false,
         headline: '',
         message: '',
+        name: '',
       },
       image: false,
       title: 'Create Your Landing Page',
@@ -227,9 +243,14 @@ export default {
         })
         // update the data url with query id and type
         qr.qrOptions.data = `http://localhost:3000/qr?id=${qr.id}&type=Social`
+        qr.qrOptions._options.data = `http://localhost:3000/qr?id=${qr.id}&type=Social`
         await this.$strapi.update('qrs', qr.id, {
           qrOptions: qr.qrOptions,
+          social: this.formValues,
+          name: this.formValues.name,
+          type: 'Social',
         })
+        this.$router.push('/profile')
       } catch (error) {
         console.log(error, 'write a error message data prop')
       }

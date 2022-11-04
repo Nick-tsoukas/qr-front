@@ -9,17 +9,22 @@
       <h1 class="text-center text-xl figlight">x close preview</h1>
     </div>
     <section v-if="create" class="mx-auto">
-      <img v-if="image" height="350" :src="image" class="mx-auto" />
+      <img
+        v-if="image"
+        height="350"
+        :src="`http://localhost:1337${image}`"
+        class="mx-auto"
+      />
     </section>
     <section v-else class="mx-auto">
       <NuxtImg height="350" src="/band.jpg" class="mx-auto" />
     </section>
     <!-- Title  -->
     <section>
-      <h1 class="text-3xl figbold text-center my-6">{{ headline }}</h1>
+      <h1 class="text-3xl figbold my-6 pl-4">{{ headline }}</h1>
     </section>
     <section>
-      <h1 class="text-lg figlight text-center my-6">{{ message }}</h1>
+      <h1 class="text-lg figlight my-6 pl-4">{{ message }}</h1>
     </section>
     <!-- Buttons -->
     <section v-if="!create" class="container mx-auto">
@@ -97,7 +102,7 @@ export default {
     message: {
       type: String,
       default: () => {
-        return 'Check us out on social media '
+        return ''
       },
     },
     buttons: {
