@@ -12,7 +12,7 @@
       <img
         v-if="image"
         height="350"
-        :src="`http://localhost:1337${image}`"
+        :src="`https://seal-app-fbtpo.ondigitalocean.app/${image}`"
         class="mx-auto"
       />
     </section>
