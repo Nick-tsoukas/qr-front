@@ -56,8 +56,8 @@ export default {
   // PWA module configuration: https://go.nuxtjs.dev/pwa
 
   strapi: {
-    // url: process.env.BACKEND_URL,
-    url: 'http://localhost:1337',
+    url: process.env.BACKEND_URL,
+    // url: 'http://localhost:1337',
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
