@@ -32,6 +32,19 @@
   }
 
   /* stylelint-disable */
+  .greenBackground {
+    /* colors #9b71fc purple  ... green #03d3aa */
+    background: '#0sd3aa'
+  }
+
+  .purpleBackground {
+    background: '#9b71fc'
+  }
+  
+  .purple {
+    color: '#9b71fc'
+  }
+
 p, li {
     font-family: "figlight";
   }

@@ -56,8 +56,8 @@ export default {
   // PWA module configuration: https://go.nuxtjs.dev/pwa
 
   strapi: {
-    url: 'https://seal-app-fbtpo.ondigitalocean.app',
-    // url: 'http://localhost:1337',
+    // url: 'https://seal-app-fbtpo.ondigitalocean.app',
+    url: 'http://localhost:1337',
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
