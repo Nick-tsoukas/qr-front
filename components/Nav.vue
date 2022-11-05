@@ -1,11 +1,17 @@
 <template>
   <div>
     <div class="flex items-center justify-end h-[72px] px-4">
-      <div class="flex-grow fixed top-6 left-4" @click="toggleMenu">
-        <nuxt-img src="/menu.svg" />
+      <div
+        class="flex-grow fixed top-6 left-4"
+        :class="{ 'z-50': !isOpen }"
+        @click="toggleMenu"
+      >
+        <nuxt-img src="/menu.svg" class="" />
       </div>
       <div>
-        <NuxtLink to="/"><nuxt-img src="/finallogo.svg" /></NuxtLink>
+        <NuxtLink to="/" class="blackNav"
+          ><nuxt-img src="/finallogo.svg"
+        /></NuxtLink>
       </div>
     </div>
     <div v-if="beenOpen">
@@ -21,70 +27,85 @@
             animate__slideInDown: isOpen,
             animate__slideOutUp: !isOpen,
           }"
-          class="absolute top-0 left-0 animate__animated w-screen bg-black px-2 py-4"
+          class="absolute top-0 left-0 animate__animated w-screen bg-black px-4 py-4"
           style="font-size: 2em"
           @click="toggleMenu"
         >
-          <NuxtImg src="/closeicon.svg" class="whiteFilter" />
+          <NuxtImg src="/closeicon.svg" class="whiteFilter h-[30px]" />
         </div>
         <div class="animate__animated">
           <div @click="toggleMenu">
-            <div class="flex items-center py-6">
-              <NuxtImg src="/home.svg" class="h-[30px] mr-4" />
-              <NuxtLink class="figlight text-xl" to="/">Home</NuxtLink>
-            </div>
+            <NuxtLink
+              class="figlight active text-xl flex items-center py-6"
+              to="/"
+              ><NuxtImg src="/home.svg" class="h-[30px] mr-4 active" />
+              <p>Home</p></NuxtLink
+            >
           </div>
           <div v-if="$strapi.user" @click="toggleMenu">
-            <div class="flex items-center py-6">
-              <NuxtImg src="/profile.svg" class="h-[30px] mr-4" />
-              <NuxtLink
-                v-if="$strapi.user.band !== null"
-                class="text-xl figlight"
-                to="/profile"
-                >Profile</NuxtLink
-              >
-            </div>
+            <NuxtLink
+              class="figlight active text-xl flex items-center py-6"
+              to="/profile"
+              ><NuxtImg src="/profile.svg" class="h-[30px] mr-4 active" />
+              <p>Profile</p></NuxtLink
+            >
           </div>
 
           <div v-if="$strapi.user" @click="toggleMenu">
-            <div class="flex items-center py-6">
-              <NuxtImg src="/add.svg" class="h-[30px] mr-4" />
-              <NuxtLink class="figlight text-xl" to="/create">Create </NuxtLink>
-            </div>
+            <NuxtLink
+              class="figlight active text-xl flex items-center py-6"
+              to="/create"
+              ><NuxtImg src="/add.svg" class="h-[30px] mr-4 active" />
+              <p>Create</p></NuxtLink
+            >
           </div>
 
           <div v-if="$strapi.user">
             <div @click="logout">
-              <div class="flex items-center py-6">
-                <NuxtImg src="/logout.svg" class="h-[30px] mr-4" />
-                <NuxtLink class="figlight text-xl" to="/" @click="logout"
-                  >Logout
-                </NuxtLink>
-              </div>
-            </div>
-          </div>
-          <div v-if="!$strapi.user" @click="toggleMenu">
-            <div class="flex items-center py-6">
-              <NuxtImg src="/profile.svg" class="h-[30px] mr-4" />
               <NuxtLink
-                class="figlight text-xl"
-                to="/signup"
-                @click="toggleMenu"
-                >Signup</NuxtLink
+                class="figlight active text-xl flex items-center py-6"
+                to="/logout"
+                ><NuxtImg src="/logout.svg" class="h-[30px] mr-4 active" />
+                <p>Logout</p></NuxtLink
               >
             </div>
           </div>
           <div v-if="!$strapi.user" @click="toggleMenu">
-            <div class="flex items-center py-6">
-              <NuxtImg src="/profile.svg" class="h-[30px] mr-4" />
-              <NuxtLink class="figlight text-xl" to="/login" @click="toggleMenu"
-                >Login</NuxtLink
-              >
-            </div>
+            <NuxtLink
+              class="figlight active text-xl flex items-center py-6"
+              to="/signup"
+              ><NuxtImg src="/signup.svg" class="h-[30px] mr-4 active" />
+              <p>Signup</p></NuxtLink
+            >
+          </div>
+          <div v-if="!$strapi.user" @click="toggleMenu">
+            <NuxtLink
+              class="figlight active text-xl flex items-center py-6"
+              to="/login"
+              ><NuxtImg src="/profile.svg" class="h-[30px] mr-4 active" />
+              <p>Login</p></NuxtLink
+            >
           </div>
         </div>
       </section>
     </div>
+    <!-- bottom nav bar -->
+    <section
+      class="w-screen bg-black flex justify-around fixed bottom-0 left-0 z-50 text-white py-4"
+    >
+      <NuxtLink class="flex items-center bottomBox active py-4" to="/">
+        <img src="/home.svg" class="whiteFilter h-[25px] mr-4" alt="" />
+        <p class="figlight">Home</p>
+      </NuxtLink>
+      <NuxtLink class="flex items-center bottomBox active py-4" to="/login">
+        <img src="/profile.svg" class="whiteFilter h-[25px] mr-4" alt="" />
+        <p class="figlight">Login</p>
+      </NuxtLink>
+      <NuxtLink class="flex items-center bottomBox py-4 active" to="/signup">
+        <img src="/signup.svg" class="whiteFilter h-[25px] mr-4" alt="" />
+        <p class="figligh">Signup</p>
+      </NuxtLink>
+    </section>
   </div>
 </template>
 
@@ -93,8 +114,8 @@ export default {
   data() {
     return {
       mobile: true,
-      isOpen: true,
-      beenOpen: true,
+      isOpen: false,
+      beenOpen: false,
     }
   },
   methods: {
@@ -109,6 +130,9 @@ export default {
       } else {
         bodyElement.style = ''
       }
+    },
+    log() {
+      console.log('hello you clicked me nav bar ')
     },
     toggleMenu() {
       if (this.beenOpen === false) {
@@ -134,5 +158,13 @@ export default {
 .whiteFilter {
   filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(1deg)
     brightness(103%) contrast(103%);
+}
+a.nuxt-link-active {
+  font-weight: bold;
+}
+
+a.active.nuxt-link-exact-active > img {
+  filter: invert(95%) sepia(22%) saturate(2706%) hue-rotate(85deg)
+    brightness(110%) contrast(101%);
 }
 </style>

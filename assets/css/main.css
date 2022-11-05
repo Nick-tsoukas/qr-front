@@ -32,9 +32,9 @@
   }
 
   /* stylelint-disable */
-  .greenBackground {
+  .green {
     /* colors #9b71fc purple  ... green #03d3aa */
-    background: '#0sd3aa'
+    background: '#00FFD7'
   }
 
   .purpleBackground {
