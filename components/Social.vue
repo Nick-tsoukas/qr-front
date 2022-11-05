@@ -1,5 +1,7 @@
 <template>
-  <div class="fixed top-0 left-0 h-screen w-screen bg-white">
+  <div
+    class="fixed top-0 left-0 h-full overflow-y-scroll w-screen bg-white z-50"
+  >
     <!-- header with close button  -->
     <div
       v-if="preview"
@@ -8,25 +10,28 @@
     >
       <h1 class="text-center text-xl figlight">x close preview</h1>
     </div>
+    <!-- user image  -->
     <section v-if="create" class="mx-auto">
       <img
         v-if="image"
-        height="350"
-        :src="`https://seal-app-fbtpo.ondigitalocean.app/${image}`"
-        class="mx-auto"
+        :src="`${baseUrl}${image}`"
+        class="mx-auto heroImg w-screen"
       />
     </section>
+    <!-- preview image  -->
     <section v-else class="mx-auto">
-      <NuxtImg height="350" src="/band.jpg" class="mx-auto" />
+      <NuxtImg src="/band.jpg" class="mx-auto heroImg w-screen" />
     </section>
     <!-- Title  -->
     <section>
       <h1 class="text-3xl figbold my-6 pl-4">{{ headline }}</h1>
     </section>
     <section>
-      <h1 class="text-lg figlight my-6 pl-4">{{ message }}</h1>
+      <h1 class="text-lg figlight my-6 pl-4">
+        {{ message }}
+      </h1>
     </section>
-    <!-- Buttons -->
+    <!-- preview button s Buttons -->
     <section v-if="!create" class="container mx-auto">
       <a href="https://google.com">
         <SocialButtons
@@ -56,6 +61,7 @@
         />
       </a>
     </section>
+
     <section v-else class="container mx-auto">
       <a
         v-for="button in buttons"
@@ -96,7 +102,7 @@ export default {
     headline: {
       type: String,
       default: () => {
-        return 'Fire'
+        return ''
       },
     },
     message: {
@@ -112,6 +118,12 @@ export default {
       },
     },
   },
+  data() {
+    return {
+      baseUrl: process.env.baseUrl,
+    }
+  },
+
   methods: {
     closePreview() {
       console.log('this should close the preview view')
@@ -120,3 +132,12 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+.heroImg {
+  height: 300px;
+  object-fit: cover;
+  object-position: top;
+  background: black;
+}
+</style>

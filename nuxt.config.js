@@ -13,9 +13,16 @@ export default {
 
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
+  env: {
+    baseUrl: 'https://seal-app-fbtpo.ondigitalocean.app',
+  },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: ['@/assets/css/main.css', 'animate.css/animate.min.css'],
+  css: [
+    '@/assets/css/main.css',
+    'animate.css/animate.min.css',
+    '@/assets/css/devices.min.css',
+  ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: ['~plugins/vue-uuid'],
@@ -56,8 +63,8 @@ export default {
   // PWA module configuration: https://go.nuxtjs.dev/pwa
 
   strapi: {
-    // url: 'https://seal-app-fbtpo.ondigitalocean.app',
-    url: 'http://localhost:1337',
+    url: 'https://seal-app-fbtpo.ondigitalocean.app',
+    // url: 'http://localhost:1337',
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

@@ -6,7 +6,6 @@
         :headline="qr.social.headline"
         :message="qr.social.message"
         :buttons="qr.social.buttons"
-        @close="log"
       />
     </section>
   </div>

@@ -62,10 +62,8 @@
 
           <div v-if="$strapi.user">
             <div @click="logout">
-              <NuxtLink
-                class="figlight active text-xl flex items-center py-6"
-                to="/logout"
-                ><NuxtImg src="/logout.svg" class="h-[30px] mr-4 active" />
+              <NuxtLink class="figlight text-xl flex items-center py-6" to="/"
+                ><NuxtImg src="/logout.svg" class="h-[30px] mr-4" />
                 <p>Logout</p></NuxtLink
               >
             </div>
@@ -90,8 +88,9 @@
       </section>
     </div>
     <!-- bottom nav bar -->
-    <section
-      class="w-screen bg-black flex justify-around fixed bottom-0 left-0 z-50 text-white py-4"
+    <!-- <section
+      v-if="!$strapi.user"
+      class="w-screen bg-black flex justify-around fixed bottom-0 left-0 z-50 text-white py-2 shadow"
     >
       <NuxtLink class="flex items-center bottomBox active py-4" to="/">
         <img src="/home.svg" class="whiteFilter h-[25px] mr-4" alt="" />
@@ -104,6 +103,30 @@
       <NuxtLink class="flex items-center bottomBox py-4 active" to="/signup">
         <img src="/signup.svg" class="whiteFilter h-[25px] mr-4" alt="" />
         <p class="figligh">Signup</p>
+      </NuxtLink>
+    </section> -->
+    <section
+      class="w-screen animate__animated bg-black flex justify-around fixed bottom-0 left-0 z-50 text-white py-2 shadow"
+      :class="{
+        animate__slideInUp: $strapi.user,
+        animate__slideOutDown: !$strapi.user,
+      }"
+    >
+      <NuxtLink class="flex items-center bottomBox active py-4" to="/profile">
+        <img src="/home.svg" class="whiteFilter h-[25px] mr-4" alt="" />
+        <p class="figlight">Profile</p>
+      </NuxtLink>
+      <NuxtLink class="flex items-center bottomBox active py-4" to="/create">
+        <img src="/profile.svg" class="whiteFilter h-[25px] mr-4" alt="" />
+        <p class="figlight">Create QR</p>
+      </NuxtLink>
+      <NuxtLink
+        class="flex items-center bottomBox active py-4"
+        to="/"
+        @click.native="logoutBottom"
+      >
+        <img src="/logout.svg" class="whiteFilter h-[25px] mr-4" alt="" />
+        <p class="figlight">Logout</p>
       </NuxtLink>
     </section>
   </div>
@@ -118,6 +141,7 @@ export default {
       beenOpen: false,
     }
   },
+
   methods: {
     async logout() {
       console.log('logging out ')
@@ -130,6 +154,9 @@ export default {
       } else {
         bodyElement.style = ''
       }
+    },
+    async logoutBottom() {
+      await this.$strapi.logout()
     },
     log() {
       console.log('hello you clicked me nav bar ')

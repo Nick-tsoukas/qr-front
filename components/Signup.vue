@@ -1,27 +1,5 @@
-<!--
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
--->
 <template>
-  <!--
-    This example requires updating your template:
-
-    ```
-    <html class="h-full bg-gray-50">
-    <body class="h-full">
-    ```
-  -->
-  <div class="flex min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8">
+  <div class="flex min-h-full flex-col justify-center py-4 sm:px-6 lg:px-8">
     <div class="sm:mx-auto sm:w-full sm:max-w-md">
       <h2
         class="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900"
@@ -110,7 +88,7 @@
           <div>
             <div
               @click="createAccount"
-              class="flex w-full justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+              class="flex w-full items-center justify-center rounded-md border border-transparent bg-black px-8 py-3 text-base fig text-[#00FFD7] hover:bg-indigo-700 md:py-4 md:px-10 md:text-lg"
             >
               Create Account
             </div>

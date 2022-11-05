@@ -2,7 +2,7 @@
   <div class="relative">
     <main class="lg:relative">
       <div
-        class="mx-auto w-full max-w-7xl pt-16 pb-20 text-center lg:py-48 lg:text-left"
+        class="mx-auto w-full max-w-7xl pt-4 pb-20 text-center lg:py-48 lg:text-left"
       >
         <div class="px-4 sm:px-8 lg:w-1/2 xl:pr-16">
           <h1

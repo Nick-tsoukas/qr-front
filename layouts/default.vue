@@ -1,7 +1,7 @@
 <template>
   <div>
-    <Nav />
-    <Nuxt class="p-4" />
+    <Nav v-if="$route.name !== 'qr'" />
+    <Nuxt class="px-4" :class="{ 'pb-[120px]': $strapi.user }" />
     <!-- <Footer /> -->
   </div>
 </template>
