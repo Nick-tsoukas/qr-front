@@ -1,5 +1,6 @@
 <template>
   <div>
+    <Back />
     <section class="container">
       <div class="mx-auto flex justify-center" id="qr-code" ref="qrCode"></div>
       <section class="container mx-auto">
