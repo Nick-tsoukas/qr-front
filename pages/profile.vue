@@ -1,8 +1,10 @@
 <template>
-  <div>
+  <div
+    class="md:flex md:gap-11 container mx-auto lg:container xl:container mt-6"
+  >
     <!-- Account message  -->
     <div
-      class="mx-auto max-w-lg overflow-hidden rounded-lg shadow-lg lg:flex lg:max-w-none"
+      class="mx-auto overflow-hidden rounded-lg shadow-lg lg:flex flex-grow w-full"
     >
       <div class="flex-1 bg-white px-6 py-8 lg:p-12">
         <h3
@@ -41,7 +43,7 @@
           </ul>
           <div
             v-if="showFeatures"
-            class="flex w-[160px] items-center justify-center rounded-md border border-black px-2 py-2 text-base fig hover:['#9b71fc'] md:py-4 md:px-10 md:text-lg mt-6"
+            class="flex w-[160px] md:w-[220px] items-center justify-center rounded-md border border-black px-2 py-2 text-base fig hover:['#9b71fc'] md:py-2 md:px-10 md:text-lg mt-6"
             @click="showFeatures = false"
           >
             <div class="flex items-center">
@@ -51,11 +53,11 @@
           </div>
           <div
             v-else
-            class="flex w-[160px] items-center justify-center rounded-md border border-black px-2 py-2 text-base fig hover:['#9b71fc'] md:py-4 md:px-10 md:text-lg mt-6"
+            class="flex w-[160px] items-center justify-center rounded-md border border-black px-2 py-2 text-base fig hover:['#9b71fc'] md:w-[220px] md:py-2 md:px-10 md:text-lg mt-6"
             @click="showFeatures = true"
           >
             <div class="flex items-center">
-              <img src="/close.svg" alt="" class="h-[10px] mr-4" />
+              <img src="/add.svg" alt="" class="h-[10px] mr-4" />
               <p>Show More</p>
             </div>
           </div>
@@ -63,8 +65,7 @@
       </div>
     </div>
     <!-- qrs -->
-    <h2 class="figbold my-4">Your Qrs</h2>
-    <section class="rounded-sm">
+    <section class="rounded-sm flex-grow w-full">
       <!-- Header of qr list -->
       <div class="flex bg-black text-white px-2 py-1 items-center">
         <p class="w-[25%]">Name</p>
@@ -112,20 +113,20 @@
       >
         <p class="text-center text-gray-500 figlight">No Qrs ...</p>
       </section>
+      <section class="mt-6">
+        <div class="rounded-md shadow bg-black">
+          <nuxt-link
+            to="/create"
+            class="flex w-full items-center justify-center rounded-md border border-transparent bg-black px-8 py-3 text-base fig text-[#00FFD7] hover:['#9b71fc'] md:py-4 md:px-10 md:text-lg"
+            ><div class="flex items-center">
+              <img src="/add.svg" alt="" class="whiteFilter h-[20px] mr-4" />
+              <p>Create Code</p>
+            </div></nuxt-link
+          >
+        </div>
+      </section>
     </section>
     <!-- Create Button here -->
-    <section class="mt-6">
-      <div class="rounded-md shadow bg-black">
-        <nuxt-link
-          to="/create"
-          class="flex w-full items-center justify-center rounded-md border border-transparent bg-black px-8 py-3 text-base fig text-[#00FFD7] hover:['#9b71fc'] md:py-4 md:px-10 md:text-lg"
-          ><div class="flex items-center">
-            <img src="/add.svg" alt="" class="whiteFilter h-[20px] mr-4" />
-            <p>Create Code</p>
-          </div></nuxt-link
-        >
-      </div>
-    </section>
   </div>
 </template>
 

@@ -1,6 +1,8 @@
 <template>
   <div>
-    <div class="flex items-center justify-end h-[72px] px-4">
+    <div
+      class="flex items-center justify-end h-[72px] px-4 container md:container mx-auto"
+    >
       <div
         class="flex-grow fixed top-6 left-4"
         :class="{ 'z-50': !isOpen }"
@@ -35,7 +37,10 @@
         </div>
         <div class="animate__animated">
           <div @click="toggleMenu">
-            <NuxtLink class="figlight text-xl flex items-center py-6" to="/"
+            <NuxtLink
+              v-if="!$strapi.user"
+              class="figlight text-xl flex items-center py-6"
+              to="/profile"
               ><NuxtImg
                 src="/home.svg"
                 class="h-[30px] mr-4"
@@ -108,7 +113,7 @@
       </NuxtLink>
     </section> -->
     <section
-      class="w-screen animate__animated bg-black flex justify-around fixed bottom-0 left-0 z-50 text-white py-2 shadow"
+      class="w-screen animate__animated bg-black flex justify-around fixed bottom-0 left-0 z-50 text-white py-2 shadow md:hidden"
       :class="{
         animate__slideInUp: $strapi.user,
         animate__slideOutDown: !$strapi.user,
