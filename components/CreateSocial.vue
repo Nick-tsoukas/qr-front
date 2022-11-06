@@ -9,6 +9,7 @@
           >
           <input
             v-model="formValues.name"
+            inputmode="search"
             name="name"
             type="text"
             autocomplete="text"
