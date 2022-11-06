@@ -11,7 +11,7 @@
         class="flex flex-col justify-center items-center gap-6 md:flex-row"
       >
         <!-- Card One Social  -->
-        <div class="max-w-sm rounded-md overflow-hidden shadow-lg">
+        <div class="max-w-sm rounded-md overflow-hidden shadow-lg mb-6">
           <CardImage class="bg-[#00e7ff]" />
           <div class="px-6 py-4">
             <div class="font-bold text-xl mb-2">Socia Media Landing Page</div>
