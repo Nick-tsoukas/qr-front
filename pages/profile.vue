@@ -1,5 +1,68 @@
 <template>
   <div>
+    <!-- Account message  -->
+    <div
+      class="mx-auto max-w-lg overflow-hidden rounded-lg shadow-lg lg:flex lg:max-w-none"
+    >
+      <div class="flex-1 bg-white px-6 py-8 lg:p-12">
+        <h3
+          class="text-2xl font-bold text-gray-900 sm:text-3xl sm:tracking-tight"
+        >
+          Free Membership
+        </h3>
+        <p class="mt-6 text-base text-gray-500">
+          Upgrade and cancel at any time
+        </p>
+        <div class="mt-8">
+          <div class="flex items-center">
+            <h4
+              class="flex-shrink-0 bg-white pr-4 text-base font-semibold text-green-400"
+            >
+              What's included
+            </h4>
+            <div class="flex-1 border-t-2 border-gray-200" />
+          </div>
+          <ul
+            v-if="showFeatures"
+            role="list"
+            class="mt-8 space-y-5 lg:grid lg:grid-cols-2 lg:gap-x-8 lg:gap-y-5 lg:space-y-0"
+          >
+            <li
+              v-for="feature in includedFeatures"
+              :key="feature"
+              class="flex items-start lg:col-span-1"
+            >
+              <div class="flex-shrink-0">
+                <NuxtImg src="/add.svg" class="h-5 w-5" aria-hidden="true" />
+              </div>
+              <p class="ml-3 text-sm text-gray-700">{{ feature }}</p>
+              <div></div>
+            </li>
+          </ul>
+          <div
+            v-if="showFeatures"
+            class="flex w-[160px] items-center justify-center rounded-md border border-black px-2 py-2 text-base fig hover:['#9b71fc'] md:py-4 md:px-10 md:text-lg mt-6"
+            @click="showFeatures = false"
+          >
+            <div class="flex items-center">
+              <img src="/close.svg" alt="" class="h-[10px] mr-4" />
+              <p>Show Less</p>
+            </div>
+          </div>
+          <div
+            v-else
+            class="flex w-[160px] items-center justify-center rounded-md border border-black px-2 py-2 text-base fig hover:['#9b71fc'] md:py-4 md:px-10 md:text-lg mt-6"
+            @click="showFeatures = true"
+          >
+            <div class="flex items-center">
+              <img src="/close.svg" alt="" class="h-[10px] mr-4" />
+              <p>Show More</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- qrs -->
     <h2 class="figbold my-4">Your Qrs</h2>
     <section class="rounded-sm">
       <!-- Header of qr list -->
@@ -52,11 +115,14 @@
     </section>
     <!-- Create Button here -->
     <section class="mt-6">
-      <div class="rounded-md shadow">
+      <div class="rounded-md shadow bg-black">
         <nuxt-link
           to="/create"
-          class="flex w-full items-center justify-center rounded-md border border-transparent bg-black px-8 py-3 text-base fig text-[#00FFD7] hover:bg-indigo-700 md:py-4 md:px-10 md:text-lg"
-          >Get started</nuxt-link
+          class="flex w-full items-center justify-center rounded-md border border-transparent bg-black px-8 py-3 text-base fig text-[#00FFD7] hover:['#9b71fc'] md:py-4 md:px-10 md:text-lg"
+          ><div class="flex items-center">
+            <img src="/add.svg" alt="" class="whiteFilter h-[20px] mr-4" />
+            <p>Create Code</p>
+          </div></nuxt-link
         >
       </div>
     </section>
@@ -68,6 +134,13 @@ export default {
   data() {
     return {
       qrs: [],
+      includedFeatures: [
+        '5 free dynamic QR Codes',
+        'Unlimited edits',
+        'Access to all our landing pages',
+        'Full Support',
+      ],
+      showFeatures: true,
     }
   },
   async mounted() {
@@ -99,5 +172,9 @@ export default {
   border-bottom: 1px solid rgba(0, 0, 0, 0.222);
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
+}
+.whiteFilter {
+  filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(1deg)
+    brightness(103%) contrast(103%);
 }
 </style>

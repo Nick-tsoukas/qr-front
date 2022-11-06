@@ -35,10 +35,12 @@
         </div>
         <div class="animate__animated">
           <div @click="toggleMenu">
-            <NuxtLink
-              class="figlight active text-xl flex items-center py-6"
-              to="/"
-              ><NuxtImg src="/home.svg" class="h-[30px] mr-4 active" />
+            <NuxtLink class="figlight text-xl flex items-center py-6" to="/"
+              ><NuxtImg
+                src="/home.svg"
+                class="h-[30px] mr-4"
+                :class="{ greenIcon: $route.name === 'index' }"
+              />
               <p>Home</p></NuxtLink
             >
           </div>
@@ -121,7 +123,7 @@
         <p class="figlight">Create QR</p>
       </NuxtLink>
       <NuxtLink
-        class="flex items-center bottomBox active py-4"
+        class="flex items-center bottomBox py-4"
         to="/"
         @click.native="logoutBottom"
       >
@@ -190,7 +192,11 @@ a.nuxt-link-active {
   font-weight: bold;
 }
 
-a.active.nuxt-link-exact-active > img {
+a.active.nuxt-link-active > img {
+  filter: invert(95%) sepia(22%) saturate(2706%) hue-rotate(85deg)
+    brightness(110%) contrast(101%);
+}
+.greenIcon {
   filter: invert(95%) sepia(22%) saturate(2706%) hue-rotate(85deg)
     brightness(110%) contrast(101%);
 }

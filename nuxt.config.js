@@ -15,6 +15,7 @@ export default {
   },
   env: {
     baseUrl: 'https://seal-app-fbtpo.ondigitalocean.app',
+    // baseUrl: 'http://localhost:1337',
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css

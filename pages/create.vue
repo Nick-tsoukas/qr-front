@@ -10,7 +10,7 @@
       >
         <!-- Card One Social  -->
         <div class="max-w-sm rounded-md overflow-hidden shadow-lg">
-          <CardImage />
+          <CardImage class="bg-[#00e7ff]" />
           <div class="px-6 py-4">
             <div class="font-bold text-xl mb-2">Socia Media Landing Page</div>
             <p class="text-gray-700 text-base">
@@ -33,7 +33,7 @@
         </div>
         <!-- Card Two -->
         <div class="max-w-sm rounded-md overflow-hidden shadow-lg">
-          <CardImage />
+          <CardImage class="bg-[#67b99a]" />
           <div class="px-6 py-4">
             <div class="font-bold text-xl mb-2">Link to any content</div>
             <p class="text-gray-700 text-base">
@@ -56,7 +56,7 @@
         </div>
         <!-- Card Three -->
         <div class="max-w-sm rounded-md overflow-hidden shadow-lg">
-          <CardImage />
+          <CardImage class="bg-[#aed9e0]" />
           <div class="px-6 py-4">
             <div class="font-bold text-xl mb-2">Link to any content</div>
             <p class="text-gray-700 text-base">

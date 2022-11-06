@@ -1,7 +1,6 @@
 <template>
-  <div class="p-6 bg-gray-50">
+  <div class="p-6 flex justify-center items-center">
     <svg
-      width="259"
       height="200"
       viewBox="0 0 259 458"
       fill="none"
