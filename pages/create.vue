@@ -2,8 +2,10 @@
   <div>
     <!-- Create Qr (pick type) Section  -->
     <section v-if="!preview" class="container mx-auto">
-      <h2 class="text-xl figbold my-4">Choose a QR Code type</h2>
-
+      <div v-if="chooseType">
+        <Back />
+        <h2 class="text-xl figbold my-4">Choose a QR Code type</h2>
+      </div>
       <div
         v-if="chooseType"
         class="flex flex-col justify-center items-center gap-6 md:flex-row"
@@ -80,7 +82,15 @@
       </div>
       <div v-if="renderSplashForm">
         <keep-alive>
-          <component :create="false" :is="`Create${splashType}`"></component>
+          <component
+            :create="false"
+            :is="`Create${splashType}`"
+            @goBackFromSplash="
+              {
+                ;(renderSplashForm = false), (chooseType = true)
+              }
+            "
+          ></component>
         </keep-alive>
       </div>
     </section>
@@ -116,6 +126,14 @@ export default {
     this.user = user
   },
   methods: {
+    goBack() {
+      this.renderSplashForm = false
+      this.chooseType = true
+    },
+    goBackSplash() {
+      this.renderSplashForm = false
+    },
+
     renderForm(val) {
       this.splashType = val
       this.chooseType = false

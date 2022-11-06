@@ -2,6 +2,9 @@
   <div>
     <section class="container">
       <div class="mx-auto flex justify-center" id="qr-code" ref="qrCode"></div>
+      <section class="container mx-auto">
+        <Button text="Download" class="mt-6" @click.native="download" />
+      </section>
     </section>
   </div>
 </template>
@@ -21,6 +24,12 @@ export default {
     this.qrCode = new QRCodeStyling(qr.qrOptions._options)
     this.qrCode.append(this.$refs.qrCode)
     console.log(this.qrCode)
+  },
+  methods: {
+    download() {
+      console.log('downloading ')
+      this.qrCode.download({ name: 'qr', extension: 'svg' })
+    },
   },
 }
 </script>

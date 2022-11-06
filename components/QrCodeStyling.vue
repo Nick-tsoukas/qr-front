@@ -1,10 +1,14 @@
 <template>
-  <div class="container mx-auto flex flex-col justify-center">
-    <label for="color">Pick Color</label>
-    <input type="color" v-model="color" @change="updateCode" />
-    {{ color }} this is color
-    <div class="mx-auto flex" id="qr-code" ref="qrCode"></div>
-    <Button class="mt-6" text="Create QR" @click.native="createQr" />
+  <div>
+    <Back route="/create" @click.native="goBack" />
+    <h2 class="text-xl figbold my-4">Style QR</h2>
+    <div class="container mx-auto flex flex-col justify-center">
+      <label for="color">Pick Color</label>
+      <input type="color" v-model="color" @change="updateCode" />
+      {{ color }} this is color
+      <div class="mx-auto flex" id="qr-code" ref="qrCode"></div>
+      <Button class="mt-6" text="Create QR" @click.native="createQr" />
+    </div>
   </div>
 </template>
 
@@ -64,6 +68,9 @@ export default {
     createQr() {
       this.updateCode()
       this.$emit('createQr', this.qrCode)
+    },
+    goBack() {
+      this.$emit('back')
     },
     downloadCode() {
       console.log('download code')

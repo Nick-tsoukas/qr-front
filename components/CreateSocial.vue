@@ -1,6 +1,7 @@
 <template>
   <section>
     <div v-if="!styleQr && !previewSplash">
+      <Back route="/create" @click.native="goBackFromSplash" />
       <div>
         <div class="mt-1">
           <label for="title" class="block text-sm font-medium text-gray-700"
@@ -199,6 +200,7 @@
       />
       <Button text="next" class="mt-6" @click.native="next" />
     </div>
+
     <Social
       v-if="previewSplash"
       :image="image ? image : ''"
@@ -209,7 +211,11 @@
       @close="log"
     />
     <!-- This is the creation of the actual qr code  -->
-    <QrCodeStyling v-if="styleQr && !previewSplash" @createQr="createQr" />
+    <QrCodeStyling
+      v-if="styleQr && !previewSplash"
+      @createQr="createQr"
+      @back="back"
+    />
   </section>
 </template>
 
@@ -235,6 +241,12 @@ export default {
     }
   },
   methods: {
+    back() {
+      this.styleQr = false
+    },
+    goBackFromSplash() {
+      this.$emit('goBackFromSplash')
+    },
     async createQr(val) {
       try {
         const qr = await this.$strapi.create('qrs', {
