@@ -108,7 +108,7 @@
       </NuxtLink>
     </section> -->
     <section
-      class="w-screen animate__animated bg-[#4338CA] flex justify-around fixed bottom-0 left-0 z-50 text-white py-2 shadow"
+      class="w-screen animate__animated bg-black flex justify-around fixed bottom-0 left-0 z-50 text-white py-2 shadow"
       :class="{
         animate__slideInUp: $strapi.user,
         animate__slideOutDown: !$strapi.user,

@@ -5,6 +5,7 @@
         <!-- <Hero class="mb-12" /> -->
         <HeroAlt />
       </section>
+
       <!-- <section
         class="container mx-auto md:grid md:grid-cols-3 md:justify-between md:gap-14"
       >
